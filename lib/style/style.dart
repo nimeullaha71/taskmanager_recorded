@@ -2,6 +2,7 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:pin_code_fields/pin_code_fields.dart';
 
 const colorRed = Color.fromRGBO(231, 28, 36, 1);
 const colorDark = Color.fromRGBO(136, 28, 32, 1);
@@ -13,6 +14,24 @@ const colorDarkBlue = Color.fromRGBO(44, 62, 80, 1);
 const colorLightGray = Color.fromRGBO(135, 142, 150, 1);
 const colorLight = Color.fromRGBO(211, 211, 211, 1);
 
+
+PinTheme AppOTPStyle(){
+  return PinTheme(
+    inactiveColor: colorLight,
+    inactiveFillColor: colorWhite,
+    selectedColor: colorGreen,
+    activeColor: colorWhite,
+
+    selectedFillColor: colorGreen,
+    shape: PinCodeFieldShape.box,
+    borderRadius: BorderRadius.circular(5),
+    fieldHeight: 50,
+    borderWidth: 0.5,
+    fieldWidth: 40,
+    activeFillColor: Colors.white,
+  );
+}
+
 TextStyle Head1Text(textColor) {
   return TextStyle(
     color: textColor,
@@ -22,9 +41,9 @@ TextStyle Head1Text(textColor) {
   );
 }
 
-TextStyle Head6Text(textColore) {
+TextStyle Head6Text(textColor) {
   return TextStyle(
-    color: textColore,
+    color: textColor,
     fontSize: 16,
     fontWeight: FontWeight.w400,
     fontFamily: 'poppins',

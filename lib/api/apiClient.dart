@@ -1,18 +1,21 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:taskmanager_recorded/style/style.dart';
+import 'package:taskmanager_recorded/utility/utility.dart';
 
-var BaseURL="https://task.teamrabbil.com/api/v1";
+var BaseURL="http://35.73.30.144:2005/api/v1";
+//var BaseURL="https://task.teamrabbil.com/api/v1";
 var RequestHeader={"Content-type":"application/json"};
 
 Future<bool>LoginRequest(FormValues)async{
-  var URL = Uri.parse("{$BaseURL}/login");
+  var URL = Uri.parse("{$BaseURL}/Login");
   var PostBody=json.encode(FormValues);
   var response=await http.post(URL,headers:RequestHeader,body: PostBody);
   var ResultCode = response.statusCode;
   var ResultBody = json.decode(response.body);
   if(ResultCode==200 && ResultBody['status']=="success"){
-    SuccessToast("Request Succes");
+    SuccessToast("Request Success");
+    await WriteUserData(ResultBody);
     return true;
   }
   else{

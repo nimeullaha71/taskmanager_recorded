@@ -3,12 +3,12 @@ import 'package:http/http.dart' as http;
 import 'package:taskmanager_recorded/style/style.dart';
 import 'package:taskmanager_recorded/utility/utility.dart';
 
-var BaseURL="http://35.73.30.144:2005/api/v1";
-//var BaseURL="https://task.teamrabbil.com/api/v1";
+//var BaseURL="http://35.73.30.144:2005/api/v1";
+var BaseURL="https://task.teamrabbil.com/api/v1";
 var RequestHeader={"Content-type":"application/json"};
 
 Future<bool>LoginRequest(FormValues)async{
-  var URL = Uri.parse("{$BaseURL}/Login");
+  var URL = Uri.parse("${BaseURL}/login");
   var PostBody=json.encode(FormValues);
   var response=await http.post(URL,headers:RequestHeader,body: PostBody);
   var ResultCode = response.statusCode;
@@ -25,8 +25,8 @@ Future<bool>LoginRequest(FormValues)async{
 
 }
 
-Future<bool>RegistrationOnRequest(FormValues)async{
-  var URL = Uri.parse("{$BaseURL}/registration");
+Future<bool>RegistrationRequest(FormValues)async{
+  var URL = Uri.parse("${BaseURL}/registration");
   var PostBody = jsonEncode(FormValues);
   var response = await http.post(URL,headers: RequestHeader,body: PostBody);
   var ResultCode = response.statusCode;
@@ -42,7 +42,7 @@ Future<bool>RegistrationOnRequest(FormValues)async{
 }
 
 Future<bool>VerifyEmailRequest(Email)async{
-  var URL = Uri.parse("{$BaseURL}/RecoverVerifyEmail/${Email}");
+  var URL = Uri.parse("${BaseURL}/RecoverVerifyEmail/${Email}");
   var response = await http.get(URL,headers: RequestHeader);
   var ResultCode = response.statusCode;
   var ResultBody = jsonDecode(response.body);
@@ -59,7 +59,7 @@ Future<bool>VerifyEmailRequest(Email)async{
 
 
 Future<bool>VerifyOTORequest(Email,OTP)async{
-  var URL = Uri.parse("{$BaseURL}/RecoverVerifyOTP/${Email}/${OTP}");
+  var URL = Uri.parse("${BaseURL}/RecoverVerifyOTP/${Email}/${OTP}");
   var response = await http.get(URL,headers: RequestHeader);
   var ResultCode = response.statusCode;
   var ResultBody = jsonDecode(response.body);

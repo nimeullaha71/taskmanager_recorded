@@ -5,7 +5,8 @@ import 'package:taskmanager_recorded/screen/onboarding/pinVerificationSCreen.dar
 import 'package:taskmanager_recorded/screen/onboarding/registrationScreen.dart';
 import 'package:taskmanager_recorded/screen/onboarding/setPasswordScreen.dart';
 import 'package:taskmanager_recorded/screen/onboarding/splashScreen.dart';
-import 'package:taskmanager_recorded/screen/task/newTaskListScreen.dart';
+import 'package:taskmanager_recorded/screen/task/homeScreen.dart';
+import 'package:taskmanager_recorded/component/newTaskList.dart';
 import 'package:taskmanager_recorded/utility/utility.dart';
 
 void main() async{
@@ -17,7 +18,7 @@ void main() async{
 
   }
   else{
-    runApp( MyApp("/newTaskList"));
+    runApp( MyApp("/"));
   }
 }
 
@@ -31,13 +32,13 @@ class MyApp extends StatelessWidget {
       title: "Task Manager",
       initialRoute: FirstRoute,
       routes: {
-        '/':(context)=>splashScreen(),
+        '/':(context)=>homeScreen(),
         '/login':(context)=>loginScreen(),
         '/registration':(context)=>registrationScreen(),
         '/pinVerification':(context)=>pinVerificationScreen(),
         '/emailVerification':(context)=>emailVerificationScreen(),
         '/setPassword':(context)=>setPasswordScreen(),
-        '/newTaskList':(context)=>newTaskListScreen(),
+
 
       },
     );

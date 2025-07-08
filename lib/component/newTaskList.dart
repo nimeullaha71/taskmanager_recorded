@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:taskmanager_recorded/api/apiClient.dart';
+import 'package:taskmanager_recorded/component/TaskList.dart';
 import 'package:taskmanager_recorded/utility/utility.dart';
 
 class newTaskList extends StatefulWidget {
@@ -10,10 +12,32 @@ class newTaskList extends StatefulWidget {
 
 class _newTaskListState extends State<newTaskList> {
 
+
+  List TaskItems = [];
+  bool loading = true;
+
+  @override
+  void initState() {
+
+    super.initState();
+    CallData();
+  }
+
+
+  CallData()async{
+    var data = await TaskListRequest("New");
+    setState(() {
+      loading=false;
+      TaskItems=data;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Text("New Task"),
-    );
+    return loading?(Center(child: CircularProgressIndicator(),)):(RefreshIndicator(
+      onRefresh: ()async{
+        await CallData();
+      }, child: TaskList(TaskItems)
+    ));
   }
 }

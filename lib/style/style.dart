@@ -15,6 +15,17 @@ const colorLightGray = Color.fromRGBO(135, 142, 150, 1);
 const colorLight = Color.fromRGBO(211, 211, 211, 1);
 
 
+SizedBox ItemSizeBox(child){
+  return SizedBox(
+    width: double.infinity,
+    child: Container(
+      padding: EdgeInsets.all(10),
+      child: child,
+    ),
+  );
+}
+
+
 PinTheme AppOTPStyle(){
   return PinTheme(
     inactiveColor: colorLight,

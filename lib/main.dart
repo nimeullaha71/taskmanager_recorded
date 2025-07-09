@@ -15,7 +15,6 @@ void main() async{
 
   if(token==null){
     runApp( MyApp("/login"));
-
   }
   else{
     runApp( MyApp("/"));
@@ -29,6 +28,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: "Task Manager",
       initialRoute: FirstRoute,
       routes: {

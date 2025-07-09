@@ -22,7 +22,7 @@ class _cancelTaskListState extends State<cancelTaskList> {
   }
 
   CallData()async{
-    var data = await TaskListRequest("Canceled");
+    var data = await TaskListRequest("Cancel");
     setState(() {
       loading=false;
       TaskItems=data;

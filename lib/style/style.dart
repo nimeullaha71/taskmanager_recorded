@@ -70,6 +70,15 @@ TextStyle Head7Text(textColor){
   );
 }
 
+TextStyle Head9Text(textColor){
+  return TextStyle(
+    color: textColor,
+    fontSize: 10,
+    fontFamily: 'poppins',
+    fontWeight: FontWeight.w400,
+  );
+}
+
 InputDecoration AppInputDecoration(label) {
   return InputDecoration(
       focusedBorder: const OutlineInputBorder(

@@ -130,6 +130,15 @@ ButtonStyle AppButtonStyle(){
   );
 }
 
+ButtonStyle AppStatusButtonStyle(btnColor){
+  return ElevatedButton.styleFrom(
+    elevation: 1,
+    padding: EdgeInsets.zero,
+    backgroundColor: btnColor,
+
+  );
+}
+
 TextStyle ButtonTextStyle(){
   return TextStyle(
     fontSize: 14,
@@ -146,6 +155,20 @@ Ink SuccessButtonCHild(String ButtonText){
       alignment: Alignment.center,
       child: Text(ButtonText,style: ButtonTextStyle(),),
     ),
+  );
+}
+
+
+Container StatusChild(statusText,statusColor){
+  return Container(
+    alignment: Alignment.center,
+    child: Text(statusText,style: TextStyle(color: colorWhite,fontSize: 10,fontWeight: FontWeight.w400),),
+    decoration: BoxDecoration(
+      borderRadius: BorderRadius.circular(20),
+      color: statusColor,
+    ),
+    height: 20,
+    width: 60,
   );
 }
 

@@ -115,6 +115,28 @@ Future<List> TaskListRequest(status) async {
 }
 
 
+Future<bool>TaskCreateRequest(FormValues)async{
+  var URL = Uri.parse("${BaseURL}/createTask");
+
+  String?token = await ReadUserData("token");
+  var RequestHeaderWithToken = {"Content-Type":"application/json","token":"$token"};
+
+  var postBody = json.encode(FormValues);
+
+  var response = await http.post(URL,headers: RequestHeaderWithToken,body: postBody);
+  var ResultCode = response.statusCode;
+  var ResultBody = json.decode(response.body);
+  if (ResultCode == 200 && ResultBody["status"] == "success") {
+    SuccessToast("Request Success.");
+    return true;
+  } else {
+    ErrorToast("Request failed, try again!");
+    return false;
+  }
+
+}
+
+
 
 
 

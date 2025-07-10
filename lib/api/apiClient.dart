@@ -137,6 +137,50 @@ Future<bool>TaskCreateRequest(FormValues)async{
 }
 
 
+Future<bool> TaskDeleteRequest(id) async {
+  var url = Uri.parse("$BaseURL/deleteTask/$id");
+
+  String? token = await ReadUserData("token");
+  var requestHeaderWithToken = {
+    "Content-Type": "application/json",
+    "token": "$token"
+  };
+
+  var response = await http.get(url, headers: requestHeaderWithToken);
+
+  var resultCode = response.statusCode;
+  var resultBody = json.decode(response.body);
+  if (resultCode == 200 && resultBody["status"] == "success") {
+    SuccessToast("Request Success.");
+    return true;
+  } else {
+    ErrorToast("Request failed, try again!");
+    return false;
+  }
+}
+
+Future<bool> TaskUpdateRequest(id, status) async {
+  var url = Uri.parse("$BaseURL/updateTaskStatus/$id/$status");
+
+  String? token = await ReadUserData("token");
+  var requestHeaderWithToken = {
+    "Content-Type": "application/json",
+    "token": "$token"
+  };
+
+  var response = await http.get(url, headers: requestHeaderWithToken);
+
+  var resultCode = response.statusCode;
+  var resultBody = json.decode(response.body);
+  if (resultCode == 200 && resultBody["status"] == "success") {
+    SuccessToast("Request Success.");
+    return true;
+  } else {
+    ErrorToast("Request failed, try again!");
+    return false;
+  }
+}
+
 
 
 
